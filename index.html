@@ -248,12 +248,42 @@ alert(current);
             </code></pre>
           </section>
           <section>
-            <h2>undefined</h2>
+            <h2>Undefined</h2>
+            <p>Used by JavaScript and means "no value"</p>
             <pre><code contenteditable="" class="javascript">
-var myVariable;
-alert(myVariable);
+var y = x;  // ReferenceError: Can't find variable: x
+
+var x;
+var y = x;  // undefined
             </code></pre>
-            <img src="img/undefined.png" alt="undefined">
+          </section>
+          <section>
+            <h2>Null</h2>
+            <p>Used by programmers to indicate "no value"</p>
+            <pre><code contenteditable="" class="javascript">
+var x = null;
+var y = x;  // null
+            </code></pre>
+          </section>
+          <section>
+            <h2>Automatic Type Conversion</h2>
+            <pre><code contenteditable="" class="javascript">
+var x = "Apollo" + 7;   // "Apollo7"
+var y = null + "ify";   // "nullify"
+var z = "4" * 5;        // 20
+            </code></pre>
+          </section>
+          <section>
+            <h2>Automatic Type Conversion</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(false == 0);   // true
+alert("" == 0);      // true
+alert("5" == 5);     // true
+
+alert(false === 0);  // false
+alert("" === 0);     // false
+alert("5" === 5);    // false
+            </code></pre>
           </section>
         </section>
 
