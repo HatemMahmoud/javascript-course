@@ -337,7 +337,7 @@ alert(add(5, 7));
           <section>
             <h2>Variable Scope</h2>
             <pre><code contenteditable="" class="javascript">
-var x = "before";
+var x = "top-level";
 
 function first() {
   alert(x);
@@ -350,6 +350,93 @@ function second() {
 }
 
 second();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Function inside Function</h2>
+            <pre><code contenteditable="" class="javascript">
+var variable = "top-level";
+
+function parentFunction() {
+  var variable = "local";
+  function childFunction() {
+    alert(variable);
+  }
+  childFunction();
+}
+
+parentFunction();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Closures</h2>
+            <pre><code contenteditable="" class="javascript">
+var variable = "top-level";
+
+function parentFunction() {
+  var variable = "local";
+  function childFunction() {
+    alert(variable);
+  }
+  return childFunction;
+}
+
+var child = parentFunction();
+child();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Closures</h2>
+            <pre><code contenteditable="" class="javascript">
+function makeAddFunction(amount) {
+  function add(number) {
+    return number + amount;
+  }
+  return add;
+}
+
+var addTwo = makeAddFunction(2);
+var addFive = makeAddFunction(5);
+alert(addTwo(1) + addFive(1));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Recursion</h2>
+            <pre><code contenteditable="" class="javascript">
+function power(base, exponent) {
+  if (exponent == 0)
+    return 1;
+  else
+    return base * power(base, exponent - 1);
+}
+
+power(2, 3);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Recursion</h2>
+            <pre><code contenteditable="" class="javascript">
+function chicken() {
+  return egg();
+}
+
+function egg() {
+  return chicken();
+}
+
+alert(chicken() + " came first.");
+
+// RangeError: Maximum call stack size exceeded.
+            </code></pre>
+          </section>
+          <section>
+            <h2>Anonymous Functions</h2>
+            <pre><code contenteditable="" class="javascript">
+function makeAddFunction(amount) {
+  return function (number) {
+    return number + amount;
+  };
+}
             </code></pre>
           </section>
         </section>
@@ -365,6 +452,10 @@ second();
           <section>
             <h2>Exercise #2</h2>
             <p>Write a program to ask the user a question and use alerts to say "Exactly", "Almost!", or "No way!" depending on the answer. Keep repeating the question until a correct answer is given.</p>
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <p>Write a function that takes a number and returns a test function that, when called with a number, returns true if the given number is greater than the number that was used to create the test function, and false otherwise.</p>
           </section>
         </section>
 
