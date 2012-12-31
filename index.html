@@ -103,6 +103,37 @@
             <h1>JavaScript Basics</h1>
           </section>
           <section>
+            <h2>JavaScript</h2>
+            <p>An interpreted, object-oriented programming language commonly used to create enhanced user interfaces and dynamic websites.</p>
+          </section>
+          <section>
+            <h2>JavaScript Engine</h2>
+            <p>An interpreter that reads and executes JavaScript source code in a web browser or web server.</p>
+          </section>
+          <section>
+            <h2>Embedded JavaScript</h2>
+            <pre><code contenteditable="" class="html">
+&lt;html&gt;
+  ...
+  &lt;script&gt;
+    // This is a comment
+    var x = 5;
+  &lt;/script&gt;
+  ...
+&lt;/html&gt;
+            </code></pre>
+          </section>
+          <section>
+            <h2>Linked JavaScript</h2>
+            <pre><code contenteditable="" class="html">
+&lt;html&gt;
+  ...
+  &lt;script src="myscript.js"&gt;&lt;/script&gt;
+  ...
+&lt;/html&gt;
+            </code></pre>
+          </section>
+          <section>
             <h2>Types of Values</h2>
             <p>Numbers, strings, booleans, objects, functions, undefined.</p>
           </section>
@@ -276,13 +307,49 @@ var z = "4" * 5;        // 20
           <section>
             <h2>Automatic Type Conversion</h2>
             <pre><code contenteditable="" class="javascript">
-alert(false == 0);   // true
-alert("" == 0);      // true
-alert("5" == 5);     // true
+function add(a, b) {
+  return a + b;
+}
 
-alert(false === 0);  // false
-alert("" === 0);     // false
-alert("5" === 5);    // false
+show(add(2, 2));
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>JavaScript Functions</h1>
+          </section>
+          <section>
+            <h2>Functions</h2>
+            <pre><code contenteditable="" class="javascript">
+function welcome() {
+  alert("Welcome!");
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+alert(add(5, 7));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Variable Scope</h2>
+            <pre><code contenteditable="" class="javascript">
+var x = "before";
+
+function first() {
+  alert(x);
+}
+
+function second() {
+  var x = "local";
+  alert(x);
+  first();
+}
+
+second();
             </code></pre>
           </section>
         </section>
