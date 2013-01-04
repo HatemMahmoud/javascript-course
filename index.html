@@ -448,7 +448,10 @@ function makeAddFunction(amount) {
           <section>
             <h2>Exercise #1</h2>
             <p>Write a program that calculates the value of 2^n for any given number n.</p>
-            <!-- <pre><code contenteditable="" class="javascript">
+          </section>
+          <section>
+            <h2>Exercise #1</h2>
+            <pre><code contenteditable="" class="javascript">
 var n = prompt("Enter a number:");
 var result = 1;
 
@@ -456,12 +459,15 @@ for(var i = 0; i < n; i++)
   result = result * 2;
 
 alert(result);
-            </code></pre> -->
+            </code></pre>
           </section>
           <section>
             <h2>Exercise #2</h2>
             <p>Write a program to ask the user a question and use alerts to say "Exactly!", "Almost!", or "No way!" depending on the answer. Keep repeating the question until a correct answer is given.</p>
-            <!-- <pre><code contenteditable="" class="javascript">
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <pre><code contenteditable="" class="javascript">
 var answer;
 while (true) {
   answer = prompt("What is the value of 3 + 4?", "");
@@ -474,12 +480,15 @@ while (true) {
   else
     alert("No way!");
 }
-            </code></pre> -->
+            </code></pre>
           </section>
           <section>
             <h2>Exercise #3</h2>
             <p>Write a function that takes a number and returns a test function that, when called with a number, returns true if the given number is greater than the number that was used to create the test function, and false otherwise.</p>
-            <!-- <pre><code contenteditable="" class="javascript">
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <pre><code contenteditable="" class="javascript">
 function greaterThan(x) {
   return function(y) {
     return y > x;
@@ -488,7 +497,7 @@ function greaterThan(x) {
 
 var greaterThanFirst = greaterThan(prompt("Enter the first number."));
 alert(greaterThanFirst(prompt("Enter the second number.")));
-            </code></pre> -->
+            </code></pre>
           </section>
         </section>
 
@@ -499,7 +508,10 @@ alert(greaterThanFirst(prompt("Enter the second number.")));
           <section>
             <h2>Assignment #1</h2>
             <p>Write a simple Rock-Paper-Scissors game in which the user plays against the computer. Each player chooses either rock, paper or scissors and the program determines who wins. The rules are: rock destroys scissors, scissors cut paper, and paper covers rock.</p>
-            <!-- <pre><code contenteditable="" class="javascript">
+          </section>
+          <section>
+            <h2>Assignment #1</h2>
+            <pre><code contenteditable="" class="javascript">
 var userChoice = prompt("Do you choose rock, paper or scissors?");
 var computerChoice = Math.random();
 
@@ -536,7 +548,228 @@ function compare(choice1, choice2){
 }
 
 compare(userChoice, computerChoice);
-            </code></pre> -->
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>JavaScript Objects</h1>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var text = "My string.";
+
+alert(text["length"]);
+alert(text.length);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var nothing = null;
+alert(nothing.length);  // 'null' is not an object
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var cat = {colour: "grey", name: "Spot", size: 46};
+console.log(cat);   // Object {colour: "grey", name: "Spot", size: 46}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var cat = {colour: "grey", name: "Spot", size: 46};
+
+cat.size = 47;
+alert(cat.size);    // 47
+
+delete cat.size;
+alert(cat.size);    // undefined
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var empty = {};
+
+empty.notReally = 1000;   // new property
+alert(empty.notReally);   // 1000
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var thing = {"gabba gabba": "hey", "5": 10};
+
+alert(thing["5"]);            // 10
+thing["5"] = 20;
+alert(thing[2 + 3]);          // 20
+
+delete thing["gabba gabba"];
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var myProperty = "length";
+var text = "my text";
+
+alert(text[myProperty]);    // 7
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var chineseBox = {};
+chineseBox.content = chineseBox;
+
+alert("content" in chineseBox);         // true
+alert("content" in chineseBox.content); // true
+
+console.log(chineseBox);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #1</h2>
+            <p>Define a set of friend names and show how a name can be added to it, how one can be removed, and how you can check whether a name occurs in it.</p>
+          </section>
+          <section>
+            <h2>Exercise #1</h2>
+            <pre><code contenteditable="" class="javascript">
+var friends = {"Ahmad": true};
+friends["Ali"] = true;
+delete friends["Ahmad"];
+alert("Ali" in friends);    // true
+alert("Ahmad" in friends);  // false
+            </code></pre>
+          </section>
+          <section>
+            <h2>Object Values</h2>
+            <pre><code contenteditable="" class="javascript">
+var object1 = {value: 10};
+var object2 = object1;
+var object3 = {value: 10};
+
+alert(object1 == object2);  // true
+alert(object1 == object3);  // false
+
+object1.value = 15;
+alert(object2.value);       // 15
+alert(object3.value);       // 10
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <p>Define a set of emails and show how you can go through them to search for some strings.</p>
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <pre><code contenteditable="" class="javascript">
+var mailArchive = {"the first e-mail": "Dear nephew, ...",
+                   "the second e-mail": "..."
+                   /* and so on ... */};
+// That makes it hard to go over the e-mails 
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <pre><code contenteditable="" class="javascript">
+var mailArchive = {0: "Dear nephew, ... (mail number 1)",
+                   1: "(mail number 2)",
+                   2: "(mail number 3)"};
+
+for (var current = 0; current in mailArchive; current++)
+  alert("Processing e-mail #" + current);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Arrays</h2>
+            <pre><code contenteditable="" class="javascript">
+var mailArchive = ["mail one", "mail two", "mail three"];
+
+for (var current = 0; current < mailArchive.length; current++)
+  alert("Processing e-mail #" + current);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <p>Write a function range that takes a positive number and returns an array containing all numbers from 0 up to and including the given number.</p>
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <pre><code contenteditable="" class="javascript">
+function range(upto) {
+  var result = [];
+  for (var i = 0; i <= upto; i++)
+    result[i] = i;
+  return result;
+}
+alert(range(4));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var name = "Hatem";
+
+alert(name.toUpperCase());        // method (property that contains a function) 
+alert(typeof name.toUpperCase);   // function
+            </code></pre>
+          </section>
+          <section>
+            <h2>Array Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var a = [];
+
+a.push("Introduction");
+a.push("to");
+a.push("JavaScript");
+
+alert(a.join(" "));         // Introduction to JavaScript
+alert(a.pop());             // JavaScript
+alert(a);                   // Introduction,to
+
+var words = "Introduction to JavaScript";
+alert(words.split(" "));    // ["Introduction", "to", "JavaScript"]
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #4</h2>
+            <p>Can you give an example of an array where .join(" ").split(" ") produces a different value?</p>
+          </section>
+          <section>
+            <h2>Exercise #4</h2>
+            <pre><code contenteditable="" class="javascript">
+var array = ["a", "b", "c d"];
+alert(array.join(" ").split(" "));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var title = "Introduction to JavaScript";
+
+alert(title.charAt(2));     // "t"
+alert(title.slice(0, 5));   // "Intro"
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #5</h2>
+            <p>Write a function that takes two strings and returns true when the first argument starts with the characters in the second argument, and false otherwise.</p>
+          </section>
+          <section>
+            <h2>Exercise #5</h2>
+            <pre><code contenteditable="" class="javascript">
+function startsWith(string, pattern) {
+  return string.slice(0, pattern.length) == pattern;
+}
+
+alert(startsWith("rotation", "rot"));
+            </code></pre>
           </section>
         </section>
 
