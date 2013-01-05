@@ -45,6 +45,9 @@
             <li>JavaScript Basics</li>
             <li>JavaScript Functions</li>
             <li>JavaScript Objects</li>
+            <li>Object-oriented Programming</li>
+            <li>Regular Expressions</li>
+            <li>Handling Errors</li>
             <li>Traversing the DOM</li>
             <li>Manipulating HTML</li>
             <li>Manipulating CSS</li>
@@ -56,7 +59,7 @@
 
         <section>
           <section>
-            <h1>History</h1>
+            <h1>Handling Errors</h1>
           </section>
           <section>
             <h2>1995</h2>
@@ -697,7 +700,7 @@ for (var current = 0; current < mailArchive.length; current++)
           </section>
           <section>
             <h2>Exercise #3</h2>
-            <p>Write a function range that takes a positive number and returns an array containing all numbers from 0 up to and including the given number.</p>
+            <p>Write a function that takes a positive number and returns an array containing all numbers from 0 up to and including the given number.</p>
           </section>
           <section>
             <h2>Exercise #3</h2>
@@ -769,6 +772,257 @@ function startsWith(string, pattern) {
 }
 
 alert(startsWith("rotation", "rot"));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Dates</h2>
+            <pre><code contenteditable="" class="javascript">
+var when = {year: 1980, month: 5, day: 24};
+            </code></pre>
+          </section>
+          <section>
+            <h2>Dates</h2>
+            <pre><code contenteditable="" class="javascript">
+var when = new Date(1980, 1, 1);    // constructor
+alert(when);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Dates</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(new Date());
+alert(new Date(1980, 1, 1));
+alert(new Date(2007, 2, 30, 8, 20, 30));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Dates</h2>
+            <pre><code contenteditable="" class="javascript">
+var today = new Date();
+alert("Year: " + today.getFullYear() + ", month: " + today.getMonth() + ", day: " + today.getDate());
+alert("Day of week: " + today.getDay());
+alert(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
+alert (today.getTime());    // milliseconds since January 1st 1970
+            </code></pre>
+          </section>
+          <section>
+            <h2>Dates</h2>
+            <pre><code contenteditable="" class="javascript">
+var today = new Date();
+alert("Year: " + today.getFullYear() + ", month: " + today.getMonth() + ", day: " + today.getDate());
+alert(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
+alert("Day of week: " + today.getDay());
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Object-oriented<br /> Programming</h1>
+          </section>
+          <section>
+            <h2>Prototype-based Programming</h2>
+            <p>A style of object-oriented programming in which classes are not present, and behavior reuse (inheritance in class-based languages) is performed via cloning existing objects that serve as prototypes.</p>
+          </section>
+          <section>
+            <h2>Classes</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person() {
+  alert('Person instantiated');
+}
+ 
+var person1 = new Person();
+var person2 = new Person();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person(gender) {
+  this.gender = gender;
+  alert('Person instantiated');
+}
+ 
+var person1 = new Person('Male');
+var person2 = new Person('Female');
+ 
+alert('person1 is a ' + person1.gender);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person(gender) {
+  this.gender = gender;
+  alert('Person instantiated');
+}
+ 
+Person.prototype.sayHello = function() {
+  alert ('hello');
+};
+ 
+var person1 = new Person('Male');
+var person2 = new Person('Female');
+ 
+person1.sayHello();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Inheritance</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person() {}
+Person.prototype.walk = function(){
+  alert ('I am walking!');
+};
+Person.prototype.sayHello = function(){
+  alert ('hello');
+};
+ 
+function Student() {
+  Person.call(this);  // Call the parent constructor
+}
+Student.prototype = new Person(); // inherit Person
+Student.prototype.constructor = Student; // correct the constructor pointer because it points to Person
+  
+Student.prototype.sayHello = function(){
+  alert('Hi, I am a student');
+}
+ 
+Student.prototype.sayGoodBye = function(){
+  alert('Good bye!');
+}
+ 
+var student1 = new Student();
+student1.sayHello();
+student1.walk();
+student1.sayGoodBye();
+ 
+alert(student1 instanceof Person); // true 
+alert(student1 instanceof Student); // true
+            </code></pre>
+          </section>
+          <section>
+            <h2>Encapsulation</h2>
+            <p>The 'Student' class doesn't need to know how the 'Person' class's walk() method is implemented, but still can use it.<br />
+               The 'Student' class doesn't need to explicitly define that method unless it wants to change it.</p>
+          </section>
+          <section>
+            <h2>Abstraction</h2>
+            <p>Specialization: The 'Function' class inherits from the 'Object' class.<br />
+              Composition: Function.prototype property is an instance of 'Object'.</p>
+            <pre><code contenteditable="" class="javascript">
+var foo = function(){};
+alert( 'foo is a Function: ' + (foo instanceof Function) );
+alert( 'foo.prototype is an Object: ' + (foo.prototype instanceof Object) );
+            </code></pre>
+          </section>
+          <section>
+            <h2>Polymorphism</h2>
+            <p>Different classes can define methods with the same name; methods are scoped to the class in which they're defined.</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Regular Expressions</h1>
+          </section>
+          <section>
+            <h2>Search</h2>
+            <pre><code contenteditable="" class="javascript">
+var slash = /\//;
+alert("AC/DC".search(slash));   // 2
+            </code></pre>
+          </section>
+          <section>
+            <h2>Search</h2>
+            <pre><code contenteditable="" class="javascript">
+var asteriskOrBrace = /[\{\*]/;
+var story = "We noticed the *giant sloth*, hanging from a giant branch.";
+alert(story.search(asteriskOrBrace));   // 15
+            </code></pre>
+          </section>
+          <section>
+            <h2>Search</h2>
+            <pre><code contenteditable="" class="javascript">
+var digitSurroundedBySpace = /\s\d\s/;
+alert("1a 2 3d".search(digitSurroundedBySpace));    // 2
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise</h2>
+            <p>Write a regular expression that matches a date in the format "XX/XX/XXXX", where the Xs are digits.</p>
+          </section>
+          <section>
+            <h2>Exercise</h2>
+            <pre><code contenteditable="" class="javascript">
+var datePattern = /\d\d\/\d\d\/\d\d\d\d/;
+alert("born 15/11/2003 (mother Spot): White Fang".search(datePattern));   // 5
+            </code></pre>
+          </section>
+          <section>
+            <h2>Test</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(/a+/.test("blah"));   // true
+alert(/^a+$/.test("blah")); // false
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise</h2>
+            <p>Write a pattern that matches e-mail addresses.</p>
+          </section>
+          <section>
+            <h2>Exercise</h2>
+            <pre><code contenteditable="" class="javascript">
+var mailAddress = /\b[\w\.-]+@[\w\.-]+\.\w{2,3}\b/;
+
+alert(mailAddress.test("kenny@test.net"));            // true
+alert(mailAddress.test("I mailt kenny@tets.nets"));   // false
+alert(mailAddress.test("the_giant_sloth@gmail.com")); // true
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Handling Errors</h1>
+          </section>
+          <section>
+            <h2>Exceptions</h2>
+            <pre><code contenteditable="" class="javascript">
+function lastElement(array) {
+  if (array.length > 0)
+    return array[array.length - 1];
+  else
+    throw "Can not take the last element of an empty array.";
+}
+
+function lastElementPlusTen(array) {
+  return lastElement(array) + 10;
+}
+
+try {
+  alert(lastElementPlusTen([]));
+}
+catch (error) {
+  alert("Something went wrong: ", error);
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exceptions</h2>
+            <pre><code contenteditable="" class="javascript">
+function processThing(thing) {
+  if (currentThing != null)
+    throw "Oh no! We are already processing a thing!";
+
+  currentThing = thing;
+  try {
+    /* do complicated processing... */
+  }
+  finally {
+    currentThing = null;
+  }
+}
             </code></pre>
           </section>
         </section>
