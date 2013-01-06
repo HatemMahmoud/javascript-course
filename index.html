@@ -45,21 +45,18 @@
             <li>JavaScript Basics</li>
             <li>JavaScript Functions</li>
             <li>JavaScript Objects</li>
-            <li>Object-oriented Programming</li>
+            <li>Object-Oriented Programming</li>
             <li>Regular Expressions</li>
             <li>Handling Errors</li>
-            <li>Traversing the DOM</li>
-            <li>Manipulating HTML</li>
-            <li>Manipulating CSS</li>
+            <li>The Document-Object Model</li>
             <li>Handling Events</li>
-            <li>Best Practices</li>
             <li>Resources</li>
           </ul>
         </section>
 
         <section>
           <section>
-            <h1>Handling Errors</h1>
+            <h1>History</h1>
           </section>
           <section>
             <h2>1995</h2>
@@ -446,117 +443,6 @@ function makeAddFunction(amount) {
 
         <section>
           <section>
-            <h1>Exercises</h1>
-          </section>
-          <section>
-            <h2>Exercise #1</h2>
-            <p>Write a program that calculates the value of 2^n for any given number n.</p>
-          </section>
-          <section>
-            <h2>Exercise #1</h2>
-            <pre><code contenteditable="" class="javascript">
-var n = prompt("Enter a number:");
-var result = 1;
-
-for(var i = 0; i < n; i++)
-  result = result * 2;
-
-alert(result);
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #2</h2>
-            <p>Write a program to ask the user a question and use alerts to say "Exactly!", "Almost!", or "No way!" depending on the answer. Keep repeating the question until a correct answer is given.</p>
-          </section>
-          <section>
-            <h2>Exercise #2</h2>
-            <pre><code contenteditable="" class="javascript">
-var answer;
-while (true) {
-  answer = prompt("What is the value of 3 + 4?", "");
-  if (answer == "7"){
-    alert("Exactly!");
-    break;
-  }
-  else if (answer == "6" || answer == "8") 
-    alert("Almost!");
-  else
-    alert("No way!");
-}
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #3</h2>
-            <p>Write a function that takes a number and returns a test function that, when called with a number, returns true if the given number is greater than the number that was used to create the test function, and false otherwise.</p>
-          </section>
-          <section>
-            <h2>Exercise #3</h2>
-            <pre><code contenteditable="" class="javascript">
-function greaterThan(x) {
-  return function(y) {
-    return y > x;
-  };
-}
-
-var greaterThanFirst = greaterThan(prompt("Enter the first number."));
-alert(greaterThanFirst(prompt("Enter the second number.")));
-            </code></pre>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h1>Assignments</h1>
-          </section>
-          <section>
-            <h2>Assignment #1</h2>
-            <p>Write a simple Rock-Paper-Scissors game in which the user plays against the computer. Each player chooses either rock, paper or scissors and the program determines who wins. The rules are: rock destroys scissors, scissors cut paper, and paper covers rock.</p>
-          </section>
-          <section>
-            <h2>Assignment #1</h2>
-            <pre><code contenteditable="" class="javascript">
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-var computerChoice = Math.random();
-
-if (computerChoice < 0.34)
-  computerChoice = "rock";
-else if(computerChoice <= 0.67)
-  computerChoice = "paper";
-else
-  computerChoice = "scissors";
-
-alert(computerChoice);
-
-function compare(choice1, choice2){
-  if(choice1 == choice2)
-    return "The result is a tie!";
-  if(choice1 == "rock"){
-    if(choice2 == "scissors")
-      return "rock wins";
-    else
-      return "paper wins";
-  }
-  if(choice1 == "paper"){
-    if(choice2 == "rock")
-      return "paper wins";
-    else
-      return "scissors wins";
-  } 
-  if(choice1 == "scissors"){
-    if(choice2 == "rock")
-      return "rock wins";
-    else
-      return "scissors wins";
-  } 
-}
-
-compare(userChoice, computerChoice);
-            </code></pre>
-          </section>
-        </section>
-
-        <section>
-          <section>
             <h1>JavaScript Objects</h1>
           </section>
           <section>
@@ -637,17 +523,17 @@ console.log(chineseBox);
             </code></pre>
           </section>
           <section>
-            <h2>Exercise #1</h2>
-            <p>Define a set of friend names and show how a name can be added to it, how one can be removed, and how you can check whether a name occurs in it.</p>
-          </section>
-          <section>
-            <h2>Exercise #1</h2>
+            <h2>Properties</h2>
             <pre><code contenteditable="" class="javascript">
-var friends = {"Ahmad": true};
-friends["Ali"] = true;
-delete friends["Ahmad"];
-alert("Ali" in friends);    // true
-alert("Ahmad" in friends);  // false
+var mailArchive = {0: "Dear nephew, ... (mail number 1)",
+                   1: "(mail number 2)",
+                   2: "(mail number 3)"};
+
+for (var current = 0; current in mailArchive; current++) {
+  alert("Processing e-mail #" + current);
+  alert(mailArchive[current]);
+  ...
+}
             </code></pre>
           </section>
           <section>
@@ -666,52 +552,15 @@ alert(object3.value);       // 10
             </code></pre>
           </section>
           <section>
-            <h2>Exercise #2</h2>
-            <p>Define a set of emails and show how you can go through them to search for some strings.</p>
-          </section>
-          <section>
-            <h2>Exercise #2</h2>
-            <pre><code contenteditable="" class="javascript">
-var mailArchive = {"the first e-mail": "Dear nephew, ...",
-                   "the second e-mail": "..."
-                   /* and so on ... */};
-// That makes it hard to go over the e-mails 
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #2</h2>
-            <pre><code contenteditable="" class="javascript">
-var mailArchive = {0: "Dear nephew, ... (mail number 1)",
-                   1: "(mail number 2)",
-                   2: "(mail number 3)"};
-
-for (var current = 0; current in mailArchive; current++)
-  alert("Processing e-mail #" + current);
-            </code></pre>
-          </section>
-          <section>
             <h2>Arrays</h2>
             <pre><code contenteditable="" class="javascript">
 var mailArchive = ["mail one", "mail two", "mail three"];
 
-for (var current = 0; current < mailArchive.length; current++)
+for (var current = 0; current < mailArchive.length; current++) {
   alert("Processing e-mail #" + current);
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #3</h2>
-            <p>Write a function that takes a positive number and returns an array containing all numbers from 0 up to and including the given number.</p>
-          </section>
-          <section>
-            <h2>Exercise #3</h2>
-            <pre><code contenteditable="" class="javascript">
-function range(upto) {
-  var result = [];
-  for (var i = 0; i <= upto; i++)
-    result[i] = i;
-  return result;
+  alert(mailArchive[current]);
+  ...
 }
-alert(range(4));
             </code></pre>
           </section>
           <section>
@@ -724,7 +573,7 @@ alert(typeof name.toUpperCase);   // function
             </code></pre>
           </section>
           <section>
-            <h2>Array Methods</h2>
+            <h2>Methods</h2>
             <pre><code contenteditable="" class="javascript">
 var a = [];
 
@@ -732,23 +581,12 @@ a.push("Introduction");
 a.push("to");
 a.push("JavaScript");
 
-alert(a.join(" "));         // Introduction to JavaScript
-alert(a.pop());             // JavaScript
-alert(a);                   // Introduction,to
+alert(a.join(" "));       // Introduction to JavaScript
+alert(a.pop());           // JavaScript
+alert(a);                 // Introduction,to
 
 var words = "Introduction to JavaScript";
-alert(words.split(" "));    // ["Introduction", "to", "JavaScript"]
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #4</h2>
-            <p>Can you give an example of an array where .join(" ").split(" ") produces a different value?</p>
-          </section>
-          <section>
-            <h2>Exercise #4</h2>
-            <pre><code contenteditable="" class="javascript">
-var array = ["a", "b", "c d"];
-alert(array.join(" ").split(" "));
+alert(words.split(" "));  // ["Introduction", "to", "JavaScript"]
             </code></pre>
           </section>
           <section>
@@ -758,20 +596,7 @@ var title = "Introduction to JavaScript";
 
 alert(title.charAt(2));     // "t"
 alert(title.slice(0, 5));   // "Intro"
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise #5</h2>
-            <p>Write a function that takes two strings and returns true when the first argument starts with the characters in the second argument, and false otherwise.</p>
-          </section>
-          <section>
-            <h2>Exercise #5</h2>
-            <pre><code contenteditable="" class="javascript">
-function startsWith(string, pattern) {
-  return string.slice(0, pattern.length) == pattern;
-}
-
-alert(startsWith("rotation", "rot"));
+alert(title.indexOf('r'));  // 3
             </code></pre>
           </section>
           <section>
@@ -784,6 +609,7 @@ var when = {year: 1980, month: 5, day: 24};
             <h2>Dates</h2>
             <pre><code contenteditable="" class="javascript">
 var when = new Date(1980, 1, 1);    // constructor
+
 alert(when);
             </code></pre>
           </section>
@@ -799,26 +625,23 @@ alert(new Date(2007, 2, 30, 8, 20, 30));
             <h2>Dates</h2>
             <pre><code contenteditable="" class="javascript">
 var today = new Date();
-alert("Year: " + today.getFullYear() + ", month: " + today.getMonth() + ", day: " + today.getDate());
-alert("Day of week: " + today.getDay());
+
+alert("Year: " + today.getFullYear() + 
+      ", month: " + today.getMonth() + 
+      ", day: " + today.getDate());
+      
+alert("Day of week: " + today.getDay());  // Sunday = 0
+
 alert(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
-alert (today.getTime());    // milliseconds since January 1st 1970
-            </code></pre>
-          </section>
-          <section>
-            <h2>Dates</h2>
-            <pre><code contenteditable="" class="javascript">
-var today = new Date();
-alert("Year: " + today.getFullYear() + ", month: " + today.getMonth() + ", day: " + today.getDate());
-alert(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
-alert("Day of week: " + today.getDay());
+
+alert(today.getTime());    // milliseconds since January 1st 1970
             </code></pre>
           </section>
         </section>
 
         <section>
           <section>
-            <h1>Object-oriented<br /> Programming</h1>
+            <h1>Object-Oriented<br /> Programming</h1>
           </section>
           <section>
             <h2>Prototype-based Programming</h2>
@@ -846,7 +669,7 @@ function Person(gender) {
 var person1 = new Person('Male');
 var person2 = new Person('Female');
  
-alert('person1 is a ' + person1.gender);
+alert('Person1 is a ' + person1.gender);
             </code></pre>
           </section>
           <section>
@@ -858,7 +681,7 @@ function Person(gender) {
 }
  
 Person.prototype.sayHello = function() {
-  alert ('hello');
+  alert ('Hello');
 };
  
 var person1 = new Person('Male');
@@ -871,6 +694,7 @@ person1.sayHello();
             <h2>Inheritance</h2>
             <pre><code contenteditable="" class="javascript">
 function Person() {}
+
 Person.prototype.walk = function(){
   alert ('I am walking!');
 };
@@ -912,8 +736,9 @@ alert(student1 instanceof Student); // true
               Composition: Function.prototype property is an instance of 'Object'.</p>
             <pre><code contenteditable="" class="javascript">
 var foo = function(){};
-alert( 'foo is a Function: ' + (foo instanceof Function) );
-alert( 'foo.prototype is an Object: ' + (foo.prototype instanceof Object) );
+
+alert(foo instanceof Function);         // true
+alert(foo.prototype instanceof Object); // true
             </code></pre>
           </section>
           <section>
@@ -925,6 +750,12 @@ alert( 'foo.prototype is an Object: ' + (foo.prototype instanceof Object) );
         <section>
           <section>
             <h1>Regular Expressions</h1>
+          </section>
+          <section>
+            <h2>Search</h2>
+            <pre><code contenteditable="" class="javascript">
+alert("JavaScript".search(/aSc/));   // 3
+            </code></pre>
           </section>
           <section>
             <h2>Search</h2>
@@ -949,11 +780,7 @@ alert("1a 2 3d".search(digitSurroundedBySpace));    // 2
             </code></pre>
           </section>
           <section>
-            <h2>Exercise</h2>
-            <p>Write a regular expression that matches a date in the format "XX/XX/XXXX", where the Xs are digits.</p>
-          </section>
-          <section>
-            <h2>Exercise</h2>
+            <h2>Search</h2>
             <pre><code contenteditable="" class="javascript">
 var datePattern = /\d\d\/\d\d\/\d\d\d\d/;
 alert("born 15/11/2003 (mother Spot): White Fang".search(datePattern));   // 5
@@ -964,20 +791,6 @@ alert("born 15/11/2003 (mother Spot): White Fang".search(datePattern));   // 5
             <pre><code contenteditable="" class="javascript">
 alert(/a+/.test("blah"));   // true
 alert(/^a+$/.test("blah")); // false
-            </code></pre>
-          </section>
-          <section>
-            <h2>Exercise</h2>
-            <p>Write a pattern that matches e-mail addresses.</p>
-          </section>
-          <section>
-            <h2>Exercise</h2>
-            <pre><code contenteditable="" class="javascript">
-var mailAddress = /\b[\w\.-]+@[\w\.-]+\.\w{2,3}\b/;
-
-alert(mailAddress.test("kenny@test.net"));            // true
-alert(mailAddress.test("I mailt kenny@tets.nets"));   // false
-alert(mailAddress.test("the_giant_sloth@gmail.com")); // true
             </code></pre>
           </section>
         </section>
@@ -1027,6 +840,332 @@ function processThing(thing) {
           </section>
         </section>
 
+        <section>
+          <section>
+            <h1>The Document-Object Model</h1>
+          </section>
+          <section>
+            <h2>The DOM</h2>
+            <img src="img/dom.png" alt="DOM">
+          </section>
+          <section>
+            <h2>document</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(document.body);
+alert(document.body.parentNode);
+alert(document.body.childNodes.length);
+            </code></pre>
+          </section>
+          <section>
+            <h2>document</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(document.documentElement.firstChild);
+alert(document.documentElement.lastChild);
+            </code></pre>
+          </section>
+          <section>
+            <h2>document</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(document.body.previousSibling);
+alert(document.body.nextSibling);
+            </code></pre>
+          </section>
+          <section>
+            <h2>innerHTML</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(document.body.innerHTML);
+            </code></pre>
+          </section>
+          <section>
+            <h2>getElementById</h2>
+            <pre><code contenteditable="" class="javascript">
+var picture = document.getElementById("picture");
+alert(picture.src);
+picture.src = "images/ostrich.png";
+            </code></pre>
+          </section>
+          <section>
+            <h2>getElementById</h2>
+            <pre><code contenteditable="" class="javascript">
+function $(id) {
+  return document.getElementById(id);
+}
+
+alert($("picture"));
+            </code></pre>
+          </section>
+          <section>
+            <h2>getElementsByTagName</h2>
+            <pre><code contenteditable="" class="javascript">
+alert(document.body.getElementsByTagName("p")[0]);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Creating Nodes</h2>
+            <pre><code contenteditable="" class="javascript">
+var secondHeader = document.createElement("h1");
+var secondTitle = document.createTextNode("Chapter 2: Basics");
+
+secondHeader.appendChild(secondTitle);
+document.body.appendChild(secondHeader);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Setting Attributes</h2>
+            <pre><code contenteditable="" class="javascript">
+var newImage = document.createElement("img");
+
+newImage.setAttribute("src", "images/flower.png");
+document.body.appendChild(newImage);
+alert(newImage.getAttribute("src"));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Internet Explorer Workaround</h2>
+            <pre><code contenteditable="" class="javascript">
+function setNodeAttribute(node, attribute, value) {
+  if (attribute == "class")
+    node.className = value;
+  else if (attribute == "checked")
+    node.defaultChecked = value;
+  else if (attribute == "for")
+    node.htmlFor = value;
+  else if (attribute == "style")
+    node.style.cssText = value;
+  else
+    node.setAttribute(attribute, value);
+}
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Exercises</h1>
+          </section>
+          <section>
+            <h2>Exercise #1</h2>
+            <p>Write a program that calculates the value of 2^n for any given number n.</p>
+          </section>
+          <section>
+            <h2>Exercise #1</h2>
+            <pre><code contenteditable="" class="javascript">
+var n = prompt("Enter a number:");
+var result = 1;
+
+for(var i = 0; i < n; i++)
+  result = result * 2;
+
+alert(result);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <p>Write a program to ask the user a question and use alerts to say "Exactly!", "Almost!", or "No way!" depending on the answer. Keep repeating the question until a correct answer is given.</p>
+          </section>
+          <section>
+            <h2>Exercise #2</h2>
+            <pre><code contenteditable="" class="javascript">
+var answer;
+while (true) {
+  answer = prompt("What is the value of 3 + 4?", "");
+  if (answer == "7"){
+    alert("Exactly!");
+    break;
+  }
+  else if (answer == "6" || answer == "8") 
+    alert("Almost!");
+  else
+    alert("No way!");
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <p>Write a function that takes a number and returns a test function that, when called with a number, returns true if the given number is greater than the number that was used to create the test function, and false otherwise.</p>
+          </section>
+          <section>
+            <h2>Exercise #3</h2>
+            <pre><code contenteditable="" class="javascript">
+function greaterThan(x) {
+  return function(y) {
+    return y > x;
+  };
+}
+
+var greaterThanFirst = greaterThan(prompt("Enter first number."));
+alert(greaterThanFirst(prompt("Enter second number.")));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #4</h2>
+            <p>Define an object to represent a set of friend names and show how a name can be added to it, how one can be removed, and how you can check whether a name occurs in it.</p>
+          </section>
+          <section>
+            <h2>Exercise #4</h2>
+            <pre><code contenteditable="" class="javascript">
+var friends = {"Ahmad": true};
+
+friends["Ali"] = true;
+delete friends["Ahmad"];
+alert("Ali" in friends);    // true
+alert("Ahmad" in friends);  // false
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #5</h2>
+            <p>Write a function that takes a positive number and returns an array containing all numbers from 0 up to and including the given number.</p>
+          </section>
+          <section>
+            <h2>Exercise #5</h2>
+            <pre><code contenteditable="" class="javascript">
+function range(upto) {
+  var result = [];
+  for (var i = 0; i <= upto; i++)
+    result[i] = i;
+  return result;
+}
+alert(range(4));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #6</h2>
+            <p>Write a function that takes two strings and returns true when the first argument starts with the characters in the second argument, and false otherwise.</p>
+          </section>
+          <section>
+            <h2>Exercise #6</h2>
+            <pre><code contenteditable="" class="javascript">
+function startsWith(string, pattern) {
+  return string.slice(0, pattern.length) == pattern;
+}
+
+alert(startsWith("rotation", "rot"));
+            </code></pre>
+          </section>
+          <section>
+            <h2>Exercise #7</h2>
+            <p>Write a function that removes the DOM node it is given as an argument from its parent node.</p>
+          </section>
+          <section>
+            <h2>Exercise #7</h2>
+            <pre><code contenteditable="" class="javascript">
+function removeElement(node) {
+  if (node.parentNode)
+    node.parentNode.removeChild(node);
+}
+
+removeElement(newParagraph);
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Assignments</h1>
+          </section>
+          <section>
+            <h2>Assignment #1</h2>
+            <p>Write a simple Rock-Paper-Scissors game in which the user plays against the computer. Each player chooses either rock, paper or scissors and the program determines who wins. The rules are: rock destroys scissors, scissors cut paper, and paper covers rock.</p>
+          </section>
+          <section>
+            <h2>Assignment #1</h2>
+            <pre><code contenteditable="" class="javascript">
+var userChoice = prompt("Do you choose rock, paper or scissors?");
+var computerChoice = Math.random();
+
+if (computerChoice < 0.34)
+  computerChoice = "rock";
+else if(computerChoice <= 0.67)
+  computerChoice = "paper";
+else
+  computerChoice = "scissors";
+
+alert(computerChoice);
+
+function compare(choice1, choice2){
+  if(choice1 == choice2)
+    return "The result is a tie!";
+  if(choice1 == "rock"){
+    if(choice2 == "scissors")
+      return "rock wins";
+    else
+      return "paper wins";
+  }
+  if(choice1 == "paper"){
+    if(choice2 == "rock")
+      return "paper wins";
+    else
+      return "scissors wins";
+  } 
+  if(choice1 == "scissors"){
+    if(choice2 == "rock")
+      return "rock wins";
+    else
+      return "scissors wins";
+  } 
+}
+
+compare(userChoice, computerChoice);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Assignment #2</h2>
+            <p>Write a pattern that matches e-mail addresses.</p>
+          </section>
+          <section>
+            <h2>Assignment #2</h2>
+            <pre><code contenteditable="" class="javascript">
+var mailAddress = /\b[\w\.-]+@[\w\.-]+\.\w{2,3}\b/;
+
+alert(mailAddress.test("kenny@test.net"));            // true
+alert(mailAddress.test("I mailt kenny@tets.nets"));   // false
+alert(mailAddress.test("the_giant_sloth@gmail.com")); // true
+            </code></pre>
+          </section>
+          <section>
+            <h2>Assignment #3</h2>
+            <p>Write a function that creates a DOM element using the given name and attributes.</p>
+            <pre><code contenteditable="" class="javascript">
+function dom(name, attributes) {
+  ...
+}
+
+var newLink = dom("a", ...);
+document.body.appendChild(newLink);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Assignment #3</h2>
+            <pre><code contenteditable="" class="javascript">
+function dom(name, attributes) {
+  var node = document.createElement(name);
+  if (attributes) {
+    forEachIn(attributes, function(name, value) {
+      setNodeAttribute(node, name, value);
+    });
+  }
+  for (var i = 2; i < arguments.length; i++) {
+    var child = arguments[i];
+    if (typeof child == "string")
+      child = document.createTextNode(child);
+    node.appendChild(child);
+  }
+  return node;
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Assignment #4</h2>
+            <p>Write a function that takes two arrays to create a table element in the DOM. The first contains the data objects, and the second describes the columns.</p>            
+            <pre><code contenteditable="" class="javascript">
+makeTable([{Tree: "Apple", Flowers: "White"},
+           {Tree: "Coral", Flowers: "Red"},
+           {Tree: "Pine",  Flowers: "None"}],
+          ["Tree", "Flowers"]);
+            </code></pre>
+          </section>
+        </section>
+        
         <section>
           <h1>Thank You!</h1>
           <h3>Hatem Mahmoud</h3>
