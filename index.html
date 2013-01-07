@@ -911,6 +911,26 @@ document.body.appendChild(secondHeader);
             </code></pre>
           </section>
           <section>
+            <h2>Creating Nodes</h2>
+            <pre><code contenteditable="" class="javascript">
+var newItem = document.createElement("li");
+var newText = document.createTextNode("My item");
+newItem.appendChild(newText);
+
+var list = document.getElementById("myList");
+list.insertBefore(newItem, list.childNodes[0]);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Removing Nodes</h2>
+            <pre><code contenteditable="" class="javascript">
+newParagraph.removeChild(newParagraph.childNodes[1]);
+
+newParagraph.replaceChild(document.createTextNode("New text "), 
+                          newParagraph.childNodes[1]);
+            </code></pre>
+          </section>
+          <section>
             <h2>Setting Attributes</h2>
             <pre><code contenteditable="" class="javascript">
 var newImage = document.createElement("img");
@@ -1115,43 +1135,39 @@ compare(userChoice, computerChoice);
           <section>
             <h2>Assignment #2</h2>
             <pre><code contenteditable="" class="javascript">
-var mailAddress = /\b[\w\.-]+@[\w\.-]+\.\w{2,3}\b/;
+var emailRegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,3}\b/;
 
-alert(mailAddress.test("kenny@test.net"));            // true
-alert(mailAddress.test("I mailt kenny@tets.nets"));   // false
-alert(mailAddress.test("the_giant_sloth@gmail.com")); // true
+alert(emailRegExp.test("kenny@test.net"));            // true
+alert(emailRegExp.test("I mailt kenny@tets.nets"));   // false
+alert(emailRegExp.test("the_giant_sloth@gmail.com")); // true
             </code></pre>
           </section>
           <section>
             <h2>Assignment #3</h2>
             <p>Write a function that creates a DOM element using the given name and attributes.</p>
-            <pre><code contenteditable="" class="javascript">
-function dom(name, attributes) {
-  ...
-}
-
-var newLink = dom("a", ...);
-document.body.appendChild(newLink);
-            </code></pre>
           </section>
           <section>
             <h2>Assignment #3</h2>
             <pre><code contenteditable="" class="javascript">
-function dom(name, attributes) {
+function dom(name, attributes, text) {
   var node = document.createElement(name);
   if (attributes) {
-    forEachIn(attributes, function(name, value) {
-      setNodeAttribute(node, name, value);
-    });
+    for (var attribute in attributes) {
+      node.setAttribute(attribute, attributes[attribute]);
+    }
   }
-  for (var i = 2; i < arguments.length; i++) {
-    var child = arguments[i];
-    if (typeof child == "string")
-      child = document.createTextNode(child);
-    node.appendChild(child);
-  }
+  if (text)
+    node.appendChild(document.createTextNode(text));
   return node;
 }
+var newLink = dom("a", {href: "http://www.example.com"}, "Click");
+var newBreak = dom("br");
+var newImage = dom("img", {src: "images/rose.png", alt: "Rose"});
+var newParagraph = dom("p", null, "My paragraph.");
+document.body.appendChild(newLink);
+document.body.appendChild(newBreak);
+document.body.appendChild(newImage);
+document.body.appendChild(newParagraph);
             </code></pre>
           </section>
           <section>
@@ -1162,6 +1178,34 @@ makeTable([{Tree: "Apple", Flowers: "White"},
            {Tree: "Coral", Flowers: "Red"},
            {Tree: "Pine",  Flowers: "None"}],
           ["Tree", "Flowers"]);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Assignment #4</h2>
+            <pre><code contenteditable="" class="javascript">
+function makeTable(data, columns) {
+  var tr = dom("tr");
+  for (var c in columns)
+    tr.appendChild(dom("th", null, columns[c]));
+  var tbody = dom("tbody");
+  tbody.appendChild(tr);
+  
+  for (var d in data) {
+    var tr = dom("tr");
+    for (var c in columns)
+      tr.appendChild(dom("td", null, data[d][columns[c]]));
+    tbody.appendChild(tr);
+  }
+  var table = dom("table");
+  table.appendChild(tbody);
+  return table;
+}
+
+var table = makeTable([{Tree: "Apple", Flowers: "White"},
+                       {Tree: "Coral", Flowers: "Red"},
+                       {Tree: "Pine",  Flowers: "None"}],
+                      ["Tree", "Flowers"]);
+document.body.appendChild(table);
             </code></pre>
           </section>
         </section>
