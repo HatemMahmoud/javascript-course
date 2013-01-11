@@ -957,6 +957,55 @@ function setNodeAttribute(node, attribute, value) {
 }
             </code></pre>
           </section>
+          <section>
+            <h2>Manipulating Styles</h2>
+            <pre><code contenteditable="" class="javascript">
+document.getElementById("profile").setAttribute(<br /> "style", "border-width: 4px; border-style: solid;");
+
+document.getElementsByClassName("picture")[0].setAttribute(<br /> "style", "border-color: red;");
+            </code></pre>
+          </section>
+          <section>
+            <h2>Manipulating Styles</h2>
+            <pre><code contenteditable="" class="javascript">
+$("picture").setAttribute("style", "border-color: red;");
+
+$("picture").style.borderColor = "red";
+
+alert($("picture").style.borderColor);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Manipulating Styles</h2>
+            <pre><code contenteditable="" class="javascript">
+$("picture").style.width = "400px";
+
+$("picture").style.height = "200px";
+            </code></pre>
+          </section>
+          <section>
+            <h2>Manipulating Styles</h2>
+            <pre><code contenteditable="" class="javascript">
+$("picture").style.display = "none";
+
+$("picture").style.display = "";
+            </code></pre>
+          </section>
+          <section>
+            <h2>Manipulating Styles</h2>
+            <pre><code contenteditable="" class="javascript">
+$("picture").style.position = "absolute";
+
+var angle = 0;
+var spin = setInterval(function() {
+  angle += 0.1;
+  $("picture").style.left = (100 + 100 * Math.cos(angle)) + "px";
+  $("picture").style.top = (100 + 100 * Math.sin(angle)) + "px";
+}, 100);
+
+clearInterval(spin);
+            </code></pre>
+          </section>
         </section>
 
         <section>
