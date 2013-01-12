@@ -749,6 +749,129 @@ alert(foo.prototype instanceof Object); // true
 
         <section>
           <section>
+            <h1>Object-Oriented<br /> JavaScript</h1>
+          </section>
+          <section>
+            <h2>JavaScript Types</h2>
+            <p>The simple types of JavaScript are:<br />
+              numbers, strings, booleans, null, and undefined.</p>
+          </section>
+          <section>
+            <h2>JavaScript Types</h2>
+            <p>All other values are objects:<br />
+              arrays, functions, regular expressions, and, of course, objects.</p>
+          </section>
+          <section>
+            <h2>JavaScript Types</h2>
+            <p>Numbers, strings, and booleans are object-like,<br />
+              but they are <strong>immutable</strong>.</p>
+          </section>
+          <section>
+            <h2>Objects</h2>
+            <p>An object is a container of <strong>properties</strong>.<br />
+              A property has a <strong>name</strong> and a <strong>value</strong>.</p>
+          </section>
+          <section>
+            <h2>Objects</h2>
+            <p>A property name can be any string.<br />
+              A property value can be any value except for undefined.</p>
+          </section>
+          <section>
+            <h2>Literal Notation</h2>
+            <pre><code contenteditable="" class="javascript">
+var ahmad = {
+  id: 7,
+  name: "Ahmad Omar"
+};
+            </code></pre>
+          </section>
+          <section>
+            <h2>Constructor Notation</h2>
+            <pre><code contenteditable="" class="javascript">
+var ahmad = new Object();   // built-in constructor
+
+ahmad.id = 7;
+ahmad.name = "Ahmad Omar";
+            </code></pre>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+var userId = ahmad.id;      // dot notation
+var userId = ahmad["id"];   // bracket notation
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var ahmad = new Object();
+ahmad.id = 7;
+
+ahmad.setId = function (newId){
+  ahmad.id = newId;
+};
+
+ahmad.setId(9);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var setId = function (newId){
+  this.id = newId;
+};
+
+var ahmad = new Object();
+ahmad.id = 7;
+ahmad.setId = setId;
+ahmad.setId(9);
+
+var ali = new Object();
+ali.id = 3;
+ali.setId = setId;
+ali.setId(5);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+var rectangle = new Object();
+rectangle.length = 3;
+rectangle.width = 4;
+rectangle.setLength = function(newLength) {
+  this.length = newLength;
+};
+rectangle.setWidth = function(newWidth) {
+  this.width = newWidth;
+};
+rectangle.calcArea = function() {
+  return this.length * this.width;
+};
+  
+rectangle.setLength(6);
+rectangle.setWidth(8);
+var area = rectangle.calcArea();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Custom Constructor</h2>
+            <pre><code contenteditable="" class="javascript">
+function Rectangle(length, width) {
+  this.length = length;
+  this.width = width;
+  this.calcArea = function() {
+    return this.length * this.width;
+  };
+}
+
+var r = new Rectangle(7,3);
+var a = r.calcArea();
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
             <h1>Regular Expressions</h1>
           </section>
           <section>
