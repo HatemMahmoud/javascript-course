@@ -868,6 +868,145 @@ var r = new Rectangle(7,3);
 var a = r.calcArea();
             </code></pre>
           </section>
+          <section>
+            <h2>typeof</h2>
+            <pre><code contenteditable="" class="javascript">
+var n = 42;
+var s = "Long text";
+var o = { country: "Egypt" };
+
+console.log(typeof n); // number
+console.log(typeof s); // string
+console.log(typeof o); // object
+            </code></pre>
+          </section>
+          <section>
+            <h2>hasOwnProperty</h2>
+            <pre><code contenteditable="" class="javascript">
+var ahmad = {
+  id: 7,
+  name: "Ahmad Omar"
+};
+
+console.log(ahmad.hasOwnProperty('name'));  // true
+console.log(ahmad.hasOwnProperty('age'));   // false
+            </code></pre>
+          </section>
+          <section>
+            <h2>for-in</h2>
+            <pre><code contenteditable="" class="javascript">
+var ahmad = {
+  id: 7,
+  name: "Ahmad Omar"
+};
+
+for(var p in ahmad) {
+  console.log(p + " = " + ahmad[p]);
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Prototype</h2>
+            <pre><code contenteditable="" class="javascript">
+function Animal(name) {
+  this.name = name;
+};
+
+var penguin = new Animal("Chilly Willy");
+
+Animal.prototype.sayName = function() {
+  console.log("Hi my name is " + this.name);
+};
+
+penguin.sayName();
+
+var lion = new Animal("Simba");
+lion.sayName();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Inheritance</h2>
+            <pre><code contenteditable="" class="javascript">
+function Animal(name, numLegs) {
+  this.name = name;
+  this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+  console.log("Hi my name is " + this.name);
+};
+
+function Penguin(name, numLegs){
+  this.name = name;
+  this.numLegs = 2;
+};
+Penguin.prototype = new Animal();   // inheritance
+
+var penguin = new Penguin("Chilly Willy");
+penguin.sayName();
+            </code></pre>
+          </section>
+          <section>
+            <h2>Inheritance</h2>
+            <pre><code contenteditable="" class="javascript">
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+    this.isAlive = true;
+}
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+function Emperor(name) {
+    this.name = name;
+    this.saying = "Waddle waddle";
+}
+Penguin.prototype = new Animal();
+Emperor.prototype = new Penguin();
+
+var myEmperor = new Emperor("Jules");
+console.log( myEmperor.saying );  // "Waddle waddle"
+console.log( myEmperor.numLegs ); // 2
+console.log( myEmperor.isAlive ); // true
+            </code></pre>
+          </section>
+          <section>
+            <h2>Private Variables</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person(name) {
+   this.name = name;
+   var bankBalance = 7500;
+   this.getBalance = function() {
+      return bankBalance;
+   };
+}
+
+var ahmad = new Person('Ahmad');
+console.log(ahmad.bankBalance);     // undefined
+console.log(ahmad.getBalance());    // 7500
+            </code></pre>
+          </section>
+          <section>
+            <h2>Private Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+function Person(name) {
+   this.name = name;
+   var bankBalance = 7500;
+   var getBalance = function() {
+      return bankBalance;
+   };
+   this.askTeller = function() {
+      return getBalance;
+   }
+}
+
+var ahmad = new Person('Ahmad');
+console.log(ahmad.getBalance);            // undefined
+
+var myBalanceMethod = ahmad.askTeller();
+console.log(myBalanceMethod());           // 7500
+            </code></pre>
+          </section>
         </section>
 
         <section>
