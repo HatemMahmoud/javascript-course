@@ -45,7 +45,7 @@
             <li>JavaScript Basics</li>
             <li>JavaScript Functions</li>
             <li>JavaScript Objects</li>
-            <li>Object-Oriented Programming</li>
+            <li>Object-Oriented JavaScript</li>
             <li>Regular Expressions</li>
             <li>Handling Errors</li>
             <li>The Document-Object Model</li>
@@ -641,114 +641,6 @@ alert(today.getTime());    // milliseconds since January 1st 1970
 
         <section>
           <section>
-            <h1>Object-Oriented<br /> Programming</h1>
-          </section>
-          <section>
-            <h2>Prototype-based Programming</h2>
-            <p>A style of object-oriented programming in which classes are not present, and behavior reuse (inheritance in class-based languages) is performed via cloning existing objects that serve as prototypes.</p>
-          </section>
-          <section>
-            <h2>Classes</h2>
-            <pre><code contenteditable="" class="javascript">
-function Person() {
-  alert('Person instantiated');
-}
- 
-var person1 = new Person();
-var person2 = new Person();
-            </code></pre>
-          </section>
-          <section>
-            <h2>Properties</h2>
-            <pre><code contenteditable="" class="javascript">
-function Person(gender) {
-  this.gender = gender;
-  alert('Person instantiated');
-}
- 
-var person1 = new Person('Male');
-var person2 = new Person('Female');
- 
-alert('Person1 is a ' + person1.gender);
-            </code></pre>
-          </section>
-          <section>
-            <h2>Methods</h2>
-            <pre><code contenteditable="" class="javascript">
-function Person(gender) {
-  this.gender = gender;
-  alert('Person instantiated');
-}
- 
-Person.prototype.sayHello = function() {
-  alert ('Hello');
-};
- 
-var person1 = new Person('Male');
-var person2 = new Person('Female');
- 
-person1.sayHello();
-            </code></pre>
-          </section>
-          <section>
-            <h2>Inheritance</h2>
-            <pre><code contenteditable="" class="javascript">
-function Person() {}
-
-Person.prototype.walk = function(){
-  alert ('I am walking!');
-};
-Person.prototype.sayHello = function(){
-  alert ('hello');
-};
- 
-function Student() {
-  Person.call(this);  // Call the parent constructor
-}
-Student.prototype = new Person(); // inherit Person
-Student.prototype.constructor = Student; // correct the constructor pointer because it points to Person
-  
-Student.prototype.sayHello = function(){
-  alert('Hi, I am a student');
-}
- 
-Student.prototype.sayGoodBye = function(){
-  alert('Good bye!');
-}
- 
-var student1 = new Student();
-student1.sayHello();
-student1.walk();
-student1.sayGoodBye();
- 
-alert(student1 instanceof Person); // true 
-alert(student1 instanceof Student); // true
-            </code></pre>
-          </section>
-          <section>
-            <h2>Encapsulation</h2>
-            <p>The 'Student' class doesn't need to know how the 'Person' class's walk() method is implemented, but still can use it.<br />
-               The 'Student' class doesn't need to explicitly define that method unless it wants to change it.</p>
-          </section>
-          <section>
-            <h2>Abstraction</h2>
-            <p>Specialization: The 'Function' class inherits from the 'Object' class.<br />
-              Composition: Function.prototype property is an instance of 'Object'.</p>
-            <pre><code contenteditable="" class="javascript">
-var foo = function(){};
-
-alert(foo instanceof Function);         // true
-alert(foo.prototype instanceof Object); // true
-            </code></pre>
-          </section>
-          <section>
-            <h2>Polymorphism</h2>
-            <p>Different classes can define methods with the same name; methods are scoped to the class in which they're defined.</p>
-          </section>
-        </section>
-
-        <section>
-          <section>
             <h1>Object-Oriented<br /> JavaScript</h1>
           </section>
           <section>
@@ -935,7 +827,7 @@ Animal.prototype.sayName = function() {
   console.log("Hi my name is " + this.name);
 };
 
-function Penguin(name, numLegs){
+function Penguin(name){
   this.name = name;
   this.numLegs = 2;
 };
@@ -1200,23 +1092,6 @@ var newImage = document.createElement("img");
 newImage.setAttribute("src", "images/flower.png");
 document.body.appendChild(newImage);
 alert(newImage.getAttribute("src"));
-            </code></pre>
-          </section>
-          <section>
-            <h2>Internet Explorer Workaround</h2>
-            <pre><code contenteditable="" class="javascript">
-function setNodeAttribute(node, attribute, value) {
-  if (attribute == "class")
-    node.className = value;
-  else if (attribute == "checked")
-    node.defaultChecked = value;
-  else if (attribute == "for")
-    node.htmlFor = value;
-  else if (attribute == "style")
-    node.style.cssText = value;
-  else
-    node.setAttribute(attribute, value);
-}
             </code></pre>
           </section>
           <section>
