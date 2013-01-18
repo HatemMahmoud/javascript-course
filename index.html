@@ -48,7 +48,7 @@
             <li>Object-Oriented JavaScript</li>
             <li>Regular Expressions</li>
             <li>Handling Errors</li>
-            <li>The Document-Object Model</li>
+            <li>The Document Object Model</li>
             <li>Handling Events</li>
             <li>Resources</li>
           </ul>
@@ -947,6 +947,12 @@ alert(/a+/.test("blah"));   // true
 alert(/^a+$/.test("blah")); // false
             </code></pre>
           </section>
+          <section>
+            <h2>RegExr</h2>
+            <a href="http://gskinner.com/RegExr/" target="_bllank">
+              <img src="img/regexr.png" alt="RegExr" />
+            </a>
+          </section>
         </section>
 
         <section>
@@ -996,7 +1002,7 @@ function processThing(thing) {
 
         <section>
           <section>
-            <h1>The Document-Object Model</h1>
+            <h1>The Document Object Model</h1>
           </section>
           <section>
             <h2>The DOM</h2>
@@ -1142,6 +1148,174 @@ var spin = setInterval(function() {
 
 clearInterval(spin);
             </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Handling Events</h1>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <p>Occur when some interaction takes place in a web page: mouse clicks, mouse motion, key presses, completing page loading, window scrolling, window resizing, etc.</p>
+          </section>
+          <section>
+            <h2>Event Listeners</h2>
+            <p>Handlers can be registered for specific events.<br />
+              Whenever an event occurs, its handler is called.</p>
+          </section>
+          <section>
+            <h2>DOM Event Flow</h2>
+            <a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow" target="_bllank">
+              <img src="img/event-dispatch.png" alt="Event Dispatch" />
+            </a>
+          </section>
+          <section>
+            <h2>Registering Event Listeners</h2>
+            <pre><code contenteditable="" class="html">
+&lt;button onclick="alert('Hello world!')"&gt;
+
+&lt;!-- Structure and behavior are not well-separated. --&gt;
+            </code></pre>
+          </section>
+          <section>
+            <h2>Registering Event Listeners</h2>
+            <pre><code contenteditable="" class="javascript">
+myButton.onclick = function(){
+  alert('Hello world');
+};
+
+// Only one handler can be set per element and per event.
+            </code></pre>
+          </section>
+          <section>
+            <h2>Registering Event Listeners</h2>
+            <pre><code contenteditable="" class="javascript">
+myButton.addEventListener('click', function(){
+  alert('Hello world');
+});
+
+// Best way
+// Internet Explorer 6-8 offered element.attachEvent instead. 
+            </code></pre>
+          </section>
+          <section>
+            <h2>Cross-Browser Event Handling</h2>
+            <p>Use a JavaScript library such as <a href="http://jquery.com" target="_bblank">jQuery</a>.</p>
+          </section>
+          <section>
+            <h2>Events and Accessibility</h2>
+            <p>What you want to do through events should work when JavaScript is disabled or blocked in the web browser.</p>
+          </section>
+          <section>
+            <h2>Events and Accessibility</h2>
+            <p>Never apply an event to an element that doesn’t already have a built-in behavior for it.</p>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+function sayHi() {
+  alert("Welcome!");  
+}
+
+window.addEventListener("load", sayHi);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+window.addEventListener("load", function () {
+  alert("Welcome!");  
+});
+            </code></pre>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+window.addEventListener("load", function () {
+  var links = document.getElementsByTagName("a");
+    for (var i=0; i < links.length; i++) {
+      links[i].addEventListener("click", function (evt) {
+        alert("I won't take you there!");
+        evt.preventDefault(); 
+    });
+  }
+});
+
+// Instead of passing event objects, IE uses a global event object
+            </code></pre>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+document.getElementById("user-name").addEventListener("keyup", whatKey);
+function whatKey (evt) {
+  var keyCode = evt.keyCode;
+  if (keyCode == 13) {
+    alert("The Enter key was pressed");
+  }
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+window.addEventListener("load", function () {
+  var contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (evt) {
+      var firstName = document.getElementById("first-name");
+      if (firstName.value.length == 0) {
+        alert("Please fill in your first name.");
+        evt.preventDefault();
+      }
+    });
+  }
+});
+            </code></pre>
+          </section>
+          <section>
+            <h2>Controlling Events</h2>
+            <pre><code contenteditable="" class="javascript">
+window.addEventListener("load", function () {
+  var contactForm = document.forms.contactForm;
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (evt) {
+      firstName = contactForm.firstName;
+      if (!firstName.value) {
+        alert("Please fill in your first name.");
+        firstName.focus();
+        evt.preventDefault();
+      }
+    });
+  }
+});
+            </code></pre>
+<form id="contactForm" action="http://example.com">
+  First name <input type='text' id='firstName'/>
+  <input type="submit" />
+</form>
+<script>
+window.addEventListener("load", function () {
+  var contactForm = document.forms.contactForm;
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (evt) {
+      firstName = contactForm.firstName;
+      if (!firstName.value) {
+        alert("Please fill in your first name.");
+        firstName.focus();
+        evt.preventDefault();
+      }
+    });
+  }
+});
+</script>
+          </section>
+          <section>
+            <h2>DOM Events Specification</h2>
+            <a href="http://www.w3.org/TR/DOM-Level-3-Events/" target="_bllank">
+              <img src="img/dom-events.png" alt="DOM Events Specification" />
+            </a>
           </section>
         </section>
 
