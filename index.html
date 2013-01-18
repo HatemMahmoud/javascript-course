@@ -50,6 +50,7 @@
             <li>Handling Errors</li>
             <li>The Document Object Model</li>
             <li>Handling Events</li>
+            <li>Working with Cookies</li>
             <li>Resources</li>
           </ul>
         </section>
@@ -1316,6 +1317,55 @@ window.addEventListener("load", function () {
             <a href="http://www.w3.org/TR/DOM-Level-3-Events/" target="_bllank">
               <img src="img/dom-events.png" alt="DOM Events Specification" />
             </a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Working with Cookies</h1>
+          </section>
+          <section>
+            <h2>Cookies</h2>
+            <p>A way to store and retrieve information on user’s computer to maintain state across requests.</p>
+          </section>
+          <section>
+            <h2>Limitations</h2>
+            <ul>
+              <li>Strings only</li>
+              <li>4KB per domain</li>
+              <li>Has an expiry date</li>
+              <li>Can be cleared by the user</li>
+              <li>Can be disabled by the user</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Writing Cookies</h2>
+            <pre><code contenteditable="" class="javascript">
+document.cookie = "language=ar"; // expires after current session
+      
+var cookieDate = new Date (2013, 05, 15);
+document.cookie = "name=Hatem;expires=" + cookieDate.toUTCString();
+
+document.cookie = 'fontSize=14;expires=' + cookieDate.toGMTString() + ';path=/subdirectory;domain=*.example.com';
+
+alert(document.cookie);   // language=ar; name=Hatem
+            </code></pre>
+          </section>
+          <section>
+            <h2>Reading Cookies</h2>
+            <pre><code contenteditable="" class="javascript">
+var cookieArray = document.cookie.split(';');
+
+var language = cookieArray[0].split("=")[1];
+var name = cookieArray[1].split("=")[1];
+            </code></pre>
+          </section>
+          <section>
+            <h2>Deleting Cookies</h2>
+            <pre><code contenteditable="" class="javascript">
+var cookieDate = new Date (1900, 01, 01);
+document.cookie = "name=;expires=" + cookieDate.toUTCString();
+            </code></pre>
           </section>
         </section>
 
