@@ -51,6 +51,7 @@
             <li>The Document Object Model</li>
             <li>Handling Events</li>
             <li>Working with Cookies</li>
+            <li>Ajax</li>
             <li>Resources</li>
           </ul>
         </section>
@@ -1365,6 +1366,114 @@ var name = cookieArray[1].split("=")[1];
             <pre><code contenteditable="" class="javascript">
 var cookieDate = new Date (1900, 01, 01);
 document.cookie = "name=;expires=" + cookieDate.toUTCString();
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Ajax</h1>
+          </section>
+          <section>
+            <a href="http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications" target="_blank">
+              <img src="img/ajax.png" alt="Ajax" />
+            </a>
+          </section>
+          <section>
+            <h2>Asynchronous JavaScript + XML</h2>
+            <p>A group of technologies used on the client-side to create asynchronous web applications.</p>
+          </section>
+          <section>
+            <h2>Asynchronous JavaScript + XML</h2>
+            <ul>
+              <li>Presentation using HTML and CSS</li>
+              <li>Dynamic display and interaction using the DOM</li>
+              <li>Data interchange using XML</li>
+              <li>Asynchronous data retrieval using XMLHttpRequest</li>
+              <li>JavaScript binding everything together</li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/ajax-fig1.png" alt="Classic vs Ajax" />
+          </section>
+          <section>
+            <img src="img/ajax-fig2.png" alt="Synchronous vs Asynchronous" />
+          </section>
+          <section>
+            <h2>XMLHttpRequest Object</h2>
+            <p>Despite the name, the use of XML is not required (JSON is often used instead), and the requests do not need to be asynchronous.</p>
+          </section>
+          <section>
+            <h2>XMLHttpRequest Methods</h2>
+            <pre><code contenteditable="" class="javascript">
+open(mode, url, boolean);   // creates a connection
+// mode: GET or POST
+// url: URL of the document
+// boolean: true for asynchronous
+
+send("string");             // sends a request to the server
+            </code></pre>
+          </section>
+          <section>
+            <h2>XMLHttpRequest Properties</h2>
+            <pre><code contenteditable="" class="javascript">
+xhr.readyState          // 0: not initialized, 4: finished
+xhr.status              // 200: OK, 404: not found, etc.
+xhr.responseXml         // holds loaded data as XML
+xhr.responseText        // holds loaded data as text
+xhr.onreadystatechange  // takes a function
+            </code></pre>
+          </section>
+          <section>
+            <h2>1. Create an instance</h2>
+            <pre><code contenteditable="" class="javascript">
+var xhr; 
+try {
+  xhr = new ActiveXObject('Msxml2.XMLHTTP');
+}
+catch (e) {
+  try {
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+  catch (e2) {
+    try {
+      xhr = new XMLHttpRequest();     
+    }
+    catch (e3) {  
+      xhr = false;   
+    }
+  }
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>2. Get ready for the response</h2>
+            <pre><code contenteditable="" class="javascript">
+xhr.onreadystatechange  = function() { 
+  if(xhr.readyState == 4) {
+    if(xhr.status == 200) 
+      document.getElementById("response").innerHTML = 
+      "Received: " + xhr.responseText; 
+    else
+      document.getElementById("response").innerHTML = 
+      "Error: " + xhr.status;
+  }
+};
+            </code></pre>
+          </section>
+          <section>
+            <h2>3. Make the request</h2>
+            <pre><code contenteditable="" class="javascript">
+xhr.open("GET", "http://example.com/document", true);
+xhr.send(null);
+
+var query = "name=Hatem"
+xhr.open("GET", "http://example.com/search" + "?" + query , true);
+xhr.send(null);
+
+xhr.open("POST", "http://example.com/create", true);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');                  
+xhr.send(data);
             </code></pre>
           </section>
         </section>
